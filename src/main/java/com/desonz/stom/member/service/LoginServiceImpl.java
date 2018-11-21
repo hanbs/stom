@@ -1,13 +1,14 @@
-package com.desonz.stom.member.LoginService;
+package com.desonz.stom.member.service;
 
-import com.desonz.stom.member.LoginMapper.LoginMapper;
-import com.desonz.stom.member.LoginModel.LoginModel;
+import com.desonz.stom.member.mapper.LoginMapper;
+import com.desonz.stom.member.model.LoginModel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -27,9 +28,8 @@ public class LoginServiceImpl implements LoginService {
         return loginMapper.loginCheck(map);
     }
 
-    // 로그아웃
     @Override
-    public void logout(HttpSession session) {
-        session.invalidate();
+    public void join(LoginModel vo) {
+        List list = new ArrayList();
     }
 }

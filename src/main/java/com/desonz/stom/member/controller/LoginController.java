@@ -1,7 +1,7 @@
-package com.desonz.stom.member.LoginController;
+package com.desonz.stom.member.controller;
 
-import com.desonz.stom.member.LoginModel.LoginModel;
-import com.desonz.stom.member.LoginService.LoginService;
+import com.desonz.stom.member.model.LoginModel;
+import com.desonz.stom.member.service.LoginService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +21,7 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @GetMapping(value = {"/", "main"})
+    @GetMapping(value = {"/", "/main"})
     public String index() {
         return "client/main";
     }
@@ -33,7 +33,7 @@ public class LoginController {
     }
 
     // 로그인 확인
-    @PostMapping(value = "login_check")
+    @PostMapping(value = "/login_check")
     public ModelAndView loginCheck(@ModelAttribute @Valid LoginModel vo, BindingResult bindingResult, HttpSession session, ModelAndView mv, String user_id, String user_pw) {
 
         // 유효성 검사 sample
@@ -71,47 +71,47 @@ public class LoginController {
     }
 
     // 로그아웃
-    @GetMapping(value = "logout")
-    public ModelAndView login(ModelAndView mv, HttpSession session) {
-        loginService.logout(session);
-        mv.setViewName("client/main");
-        return mv;
+    @GetMapping(value = "/logout")
+    public String login(HttpSession session) {
+        session.setAttribute("user_id", null);
+        return "redirect:/main";
     }
 
     // 회원가입
-    @GetMapping(value = "join")
+    @GetMapping(value = "/join")
     public String join() {
         return "client/join";
     }
 
     // 회원가입 확인
-    @PostMapping(value = "join_check")
+    @PostMapping(value = "/join_check")
     public ModelAndView joinCheck(ModelAndView mv) {
+
         mv.setViewName("client/login");
         return mv;
     }
 
     // 아이디 찾기
-    @GetMapping(value = "find_id")
+    @GetMapping(value = "/find_id")
     public String findId() {
         return "client/find_id";
     }
 
     // 아이디 확인
-    @PostMapping(value = "find_id_check")
+    @PostMapping(value = "/find_id_check")
     public ModelAndView findIdCheck(ModelAndView mv) {
         mv.setViewName("client/login");
         return mv;
     }
 
     // 비밀번호 찾기
-    @GetMapping(value = "find_pw")
+    @GetMapping(value = "/find_pw")
     public String findPw() {
         return "client/find_pw";
     }
 
     // 비밀번호 확인
-    @PostMapping(value = "find_pw_check")
+    @PostMapping(value = "/find_pw_check")
     public ModelAndView findPwCheck(ModelAndView mv) {
         mv.setViewName("client/login");
         return mv;

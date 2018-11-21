@@ -17,7 +17,7 @@
     <!--<img alt="메인으로" src="../../images/engbook.jpg"-->
     <!--th:src="@{/images/engbook.jpg}" width="300" height="100"></a>-->
     <div class="header-limiter">
-        <h1><a href="main">English<span>Word</span></a></h1>
+        <h1><a href="/main">English<span>Word</span></a></h1>
         <!-- 2. nav는 나중에 dropdown 형식으로 바뀔 수 있음. -->
         <nav>
             <!-- 회원만 보여야 됨 -->
@@ -28,13 +28,22 @@
             <!--<a href="#">단어 관리</a>-->
             <!--<a href="#">회원 관리</a>-->
         </nav>
+
         <ul>
-            <li>
-                <a href="/login">로그인</a>
-            </li>
-            <li>
-                <a href="/join">회원가입</a>
-            </li>
+            <div th:if="${session.user_id}">
+                <a th:text="${session.user_id}"></a> 님 반갑습니다.
+                <li>
+                    <a href="/logout">로그아웃</a>
+                </li>
+            </div>
+            <div th:unless="${session.user_id}">
+                <li>
+                    <a href="/login">로그인</a>
+                </li>
+                <li>
+                    <a href="/join">회원가입</a>
+                </li>
+            </div>
         </ul>
     </div>
 </header>
