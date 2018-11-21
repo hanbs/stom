@@ -4,7 +4,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public interface LoginService {
-
+//
     // 로그인
     List loginCheck(String user_id, String user_pw);
 
