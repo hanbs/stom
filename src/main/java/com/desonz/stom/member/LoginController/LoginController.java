@@ -1,7 +1,7 @@
 package com.desonz.stom.member.LoginController;
 
-import com.desonz.stom.member.LoginMapper.LoginMapper;
 import com.desonz.stom.member.LoginModel.LoginModel;
+import com.desonz.stom.member.LoginService.LoginService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +21,7 @@ import java.util.List;
 public class LoginController {
 
     @Autowired
-    private LoginMapper mapper;
+    private LoginService loginService;
 
     @GetMapping(value = {"/", "/main"})
     public String index() {
@@ -51,10 +51,7 @@ public class LoginController {
         // mv.setViewName("");
         // mv.addObject("",);
 
-        List <LoginModel> result = mapper.loginCheck(user_id, user_pw);
-        user_id = vo.getUser_id();
-        user_pw = vo.getUser_pw();
-
+        List result = loginService.loginCheck(user_id, user_pw);
 
         String userid = req.getParameter("user_id");
         String userpw = req.getParameter("user_pw");
@@ -63,12 +60,13 @@ public class LoginController {
         log.info("(get parameter)userid >> " + userid + ", (get parameter)userpw >> " + userpw);
         log.info("(return service)result 값 >> " + result);
 
-        if (user_id == userid && user_pw == userpw) {
-
-            session.setAttribute("user_id", userid); // 세션에 저장 해 둬야되나???
+        if (result.equals(userid) && result.equals(userpw)) { // mapper에서 가져온 result와 파라미터에서 가져온 값 비교
+            // 성공
+            session.setAttribute("user_id", userid);
             session.setAttribute("user_pw", userpw);
             mv.setViewName("client/main");
         } else {
+            // 실패
             mv.setViewName("client/login");
         }
         return mv;
@@ -77,7 +75,7 @@ public class LoginController {
     // 로그아웃
     @GetMapping(value = "logout")
     public ModelAndView login(ModelAndView mv, HttpSession session) {
-        mapper.logout(session);
+        loginService.logout(session);
         mv.setViewName("client/main");
         return mv;
     }
