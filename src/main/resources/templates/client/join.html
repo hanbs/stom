@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="../../css/style.css">
+</head>
+
+<body>
+<header th:replace="include/header :: header"></header>
+<h3>회원가입</h3>
+
+
+
+<form action="join_s" method="post">
+
+
+        <label for="user_name">이름</label>
+        <input type="text" id="user_name" th:name="user_name" placeholder="이름">
+
+        <label for="user_id">아이디</label>
+        <input type="text" id="user_id" th:name="user_id" placeholder="아이디">
+        <a href="#" id="user_id_checkBtn" class="btn">중복확인</a>
+
+        <label for="user_pw">비밀번호</label>
+        <input type="text" id="user_pw" th:name="user_pw" placeholder="나이">
+    </fieldset>
+    <hr>
+    <fieldset>
+        <input type="submit" value="회원가입">
+    </fieldset>
+</form>
+<footer th:replace="include/footer :: footer"></footer>
+</body>
+</html>

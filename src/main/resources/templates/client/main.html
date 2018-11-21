@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>영어 단어 사이트</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+<body>
+<div id="wrapper">
+    <header th:replace="include/header :: header"></header>
+        <section class="webdesigntuts-workshop">
+            <form action="" method="">
+                <input type="search" placeholder="찾으시는 단어를 입력해 주세요.">
+                <button>검색</button>
+            </form>
+        </section>
+    <footer th:replace="include/footer :: footer"></footer>
+</div>
+</body>
+</html>

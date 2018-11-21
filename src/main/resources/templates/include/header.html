@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<title>개인 홈페이지</title>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" href="../../css/login.css">
+    <link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<header th:fragment="header" class="header-login-signup">
+    <!-- 1. 이미지 쓰려다가 폰트로 변경. -->
+    <!--<a href="main">-->
+    <!--<img alt="메인으로" src="../../images/engbook.jpg"-->
+    <!--th:src="@{/images/engbook.jpg}" width="300" height="100"></a>-->
+    <div class="header-limiter">
+        <h1><a href="main">English<span>Word</span></a></h1>
+        <!-- 2. nav는 나중에 dropdown 형식으로 바뀔 수 있음. -->
+        <nav>
+            <!-- 회원만 보여야 됨 -->
+            <!--<a href="#">단어 추가</a>-->
+            <!--<a href="#" class="selected">내가 저장한 단어 리스트</a>-->
+
+            <!-- 관리자가 추가 되면, 활성화(미구현) -->
+            <!--<a href="#">단어 관리</a>-->
+            <!--<a href="#">회원 관리</a>-->
+        </nav>
+        <ul>
+            <li>
+                <a href="login">로그인</a>
+            </li>
+            <li>
+                <a href="join_g">회원가입</a>
+            </li>
+        </ul>
+    </div>
+</header>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://cdn.tutorialzine.com/misc/enhance/v3.js" async></script>
+</body>
+</html>
