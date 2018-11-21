@@ -10,7 +10,7 @@ import java.util.Map;
 @Mapper
 @Repository
 public interface LoginMapper {
-
+//
     // 로그인
     LoginModel loginCheck(Map <String, String> map);
 

@@ -5,7 +5,7 @@ import com.desonz.stom.member.LoginModel.LoginModel;
 import javax.servlet.http.HttpSession;
 
 public interface LoginService {
-
+//
     // 로그인
     LoginModel loginCheck(String user_id, String user_pw);
 
