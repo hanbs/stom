@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.List;
 
 @Slf4j
 @Controller
@@ -23,21 +21,22 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @GetMapping(value = {"/", "/main"})
+    @GetMapping(value = {"/", "main"})
     public String index() {
         return "client/main";
     }
 
     // 로그인
-    @GetMapping(value = "login")
-    public String login_g() {
+    @GetMapping(value = "/login")
+    public String login() {
         return "client/login";
     }
 
     // 로그인 확인
     @PostMapping(value = "login_check")
-    public ModelAndView login_s(@ModelAttribute @Valid LoginModel vo, BindingResult bindingResult, HttpSession session, ModelAndView mv, HttpServletRequest req, String user_id, String user_pw) {
+    public ModelAndView loginCheck(@ModelAttribute @Valid LoginModel vo, BindingResult bindingResult, HttpSession session, ModelAndView mv, String user_id, String user_pw) {
 
+        // 유효성 검사 sample
         // if (bindingResult.hasErrors()) {
         // List <ObjectError> list = bindingResult.getAllErrors();
         // for (ObjectError e : list) {
@@ -51,16 +50,15 @@ public class LoginController {
         // mv.setViewName("");
         // mv.addObject("",);
 
-        List result = loginService.loginCheck(user_id, user_pw);
+        LoginModel result =  loginService.loginCheck(user_id, user_pw);
 
-        String userid = req.getParameter("user_id");
-        String userpw = req.getParameter("user_pw");
+        String userid = vo.getUser_id();
+        String userpw = vo.getUser_pw();
 
         log.info("(get vo)user_id >> " + user_id + ", (get vo)user_pw >> " + user_pw);
-        log.info("(get parameter)userid >> " + userid + ", (get parameter)userpw >> " + userpw);
         log.info("(return service)result 값 >> " + result);
 
-        if (result.equals(userid) && result.equals(userpw)) { // mapper에서 가져온 result와 파라미터에서 가져온 값 비교
+        if (result != null) { // vo의 값이 null이 아니면,
             // 성공
             session.setAttribute("user_id", userid);
             session.setAttribute("user_pw", userpw);
@@ -81,9 +79,42 @@ public class LoginController {
     }
 
     // 회원가입
-    @GetMapping(value = "join_g")
+    @GetMapping(value = "join")
     public ModelAndView join(ModelAndView mv) {
         mv.setViewName("client/join");
+        return mv;
+    }
+
+    // 회원가입 확인
+    @PostMapping(value = "join_check")
+    public ModelAndView joinCheck(ModelAndView mv) {
+        mv.setViewName("client/login");
+        return mv;
+    }
+
+    // 아이디 찾기
+    @GetMapping(value = "find_id")
+    public String findId() {
+        return "client/find_id";
+    }
+
+    // 아이디 확인
+    @PostMapping(value = "find_id_check")
+    public ModelAndView findIdCheck(ModelAndView mv) {
+        mv.setViewName("client/login");
+        return mv;
+    }
+
+    // 비밀번호 찾기
+    @GetMapping(value = "find_pw")
+    public String findPw() {
+        return "client/find_pw";
+    }
+
+    // 비밀번호 확인
+    @PostMapping(value = "find_pw_check")
+    public ModelAndView findPwCheck(ModelAndView mv) {
+        mv.setViewName("client/login");
         return mv;
     }
 }

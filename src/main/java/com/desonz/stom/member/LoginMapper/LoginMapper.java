@@ -1,18 +1,18 @@
 package com.desonz.stom.member.LoginMapper;
 
+import com.desonz.stom.member.LoginModel.LoginModel;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
+import java.util.Map;
 
 @Mapper
 @Repository
 public interface LoginMapper {
 
     // 로그인
-    List loginCheck(@Param("user_id") String user_id, @Param("user_pw") String user_pw);
+    LoginModel loginCheck(Map <String, String> map);
 
     // 로그아웃
     void logout(HttpSession session);

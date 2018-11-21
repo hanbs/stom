@@ -1,10 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>아이디 찾기</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/login.css}" href="../../css/login.css">
 </head>
 <body>
-$END$
+<header th:replace="include/header :: header"></header>
+<div class="form">
+    <div class="form-toggle"></div>
+    <div class="form-panel one">
+        <div class="form-header">
+            <form action="/find_pw_check" method="post">
+                <div class="form-group">
+                    <label for="user_name"></label>
+                    <input type="text" id="user_name" th:name="user_name" placeholder="이름을 입력 해주세요."
+                           minlength="2" maxlength="20" autocomplete="off" required>
+                </div>
+                <div class="form-group">
+                    <label for="user_email"></label>
+                    <input type="text" id="user_email" th:name="user_email" placeholder="이메일을 입력 해주세요."
+                           minlength="9" maxlength="50" autocomplete="off" required>
+                </div>
+                <br>
+                <div class="form-group">
+                    <a href="/login" class="form-recovery">로그인 화면으로</a>
+                </div>
+                <br>
+                <div class="form-group">
+                    <button type="submit">아이디 찾기</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<footer th:replace="include/footer :: footer"></footer>
 </body>
 </html>

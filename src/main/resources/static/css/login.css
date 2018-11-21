@@ -37,7 +37,7 @@ html, body {
 }
 .header-login-signup .header-limiter h1{
     float: left;
-    font: normal 35px Gabriola ,Cookie, Arial, Helvetica;
+    font: normal 55px Gabriola ,Cookie, Arial, Helvetica;
     line-height: 40px;
     margin: 0;
 }
@@ -67,7 +67,7 @@ html, body {
     opacity: 1;
 }
 .header-login-signup .header-limiter nav a.selected {
-    color: #608bd2;
+    *color: #608bd2;
 }
 .header-login-signup .header-limiter ul {
     font: 14px Arial, Helvetica, sans-serif;
@@ -316,6 +316,7 @@ footer .menu li a:hover {
     text-align: center;
     text-decoration: none;
     color: #8e8e8e;
+    margin: auto;
 }
 .form-panel {
     padding: 60px calc(5% + 60px) 60px 60px;
