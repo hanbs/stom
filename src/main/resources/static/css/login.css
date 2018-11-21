@@ -322,7 +322,6 @@ footer .menu li a:hover {
     padding: 60px calc(5% + 60px) 60px 60px;
     box-sizing: border-box;
     background-color: #222222;
-
 }
 .form-panel.one:before {
     content: '';
