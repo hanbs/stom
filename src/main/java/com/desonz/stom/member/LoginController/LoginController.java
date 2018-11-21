@@ -80,9 +80,8 @@ public class LoginController {
 
     // 회원가입
     @GetMapping(value = "join")
-    public ModelAndView join(ModelAndView mv) {
-        mv.setViewName("client/join");
-        return mv;
+    public String join() {
+        return "client/join";
     }
 
     // 회원가입 확인

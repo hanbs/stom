@@ -26,7 +26,7 @@ html, body {
     background-color:#222222;
     box-shadow:0 1px 1px #ccc;
     padding: 20px 40px;
-    height: 130px;
+    height: 100px;
     color: #ffffff;
     box-sizing: border-box;
 }
@@ -322,6 +322,7 @@ footer .menu li a:hover {
     padding: 60px calc(5% + 60px) 60px 60px;
     box-sizing: border-box;
     background-color: #222222;
+
 }
 .form-panel.one:before {
     content: '';
