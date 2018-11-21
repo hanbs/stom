@@ -50,7 +50,7 @@ public class LoginController {
         // log.debug("### vo : ",vo );
         // mv.setViewName("");
         // mv.addObject("",);
-//
+
         List result = loginService.loginCheck(user_id, user_pw);
 
         String userid = req.getParameter("user_id");
